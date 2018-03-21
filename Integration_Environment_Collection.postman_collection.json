@@ -1,13 +1,13 @@
 {
 	"info": {
-		"name": "Integration Environment Collection",
 		"_postman_id": "051f3453-526c-465f-b17e-ab69dcf93747",
+		"name": "Integration Environment Collection",
 		"description": "Postman collection for uploading and patching extensions in the integration environment.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Upload extension",
+			"name": "Create - Upload extension",
 			"event": [
 				{
 					"listen": "test",
@@ -39,11 +39,22 @@
 					{
 						"key": "Authorization",
 						"value": "bearer {{ACCESS_TOKEN}}"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache"
 					}
 				],
 				"body": {
-					"mode": "file",
-					"file": {}
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "package",
+							"value": "",
+							"description": "",
+							"type": "file"
+						}
+					]
 				},
 				"url": {
 					"raw": "https://mc-api-activation-reactor-integration.adobe.io/extension_packages",
@@ -89,7 +100,7 @@
 					},
 					{
 						"key": "Content-Type",
-						"value": "application/json"
+						"value": "application/vnd.api+json"
 					},
 					{
 						"key": "X-Api-Key",
@@ -98,7 +109,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "https://mc-api-activation-reactor-integration.adobe.io/extension_packages/",
+					"raw": "https://mc-api-activation-reactor-integration.adobe.io/extension_packages",
 					"protocol": "https",
 					"host": [
 						"mc-api-activation-reactor-integration",
@@ -106,8 +117,7 @@
 						"io"
 					],
 					"path": [
-						"extension_packages",
-						""
+						"extension_packages"
 					]
 				},
 				"description": "Get a listing of extension packages in the integration environment."
@@ -141,12 +151,12 @@
 						"value": "bearer {{ACCESS_TOKEN}}"
 					},
 					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
 						"key": "X-Api-Key",
 						"value": "{{API_KEY}}"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache"
 					}
 				],
 				"body": {},
@@ -199,11 +209,22 @@
 					{
 						"key": "X-Api-Key",
 						"value": "{{API_KEY}}"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache"
 					}
 				],
 				"body": {
-					"mode": "file",
-					"file": {}
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "package",
+							"value": "",
+							"description": "",
+							"type": "file"
+						}
+					]
 				},
 				"url": {
 					"raw": "https://mc-api-activation-reactor-integration.adobe.io/extension_packages/{{EXT_PKG_ID}}",
